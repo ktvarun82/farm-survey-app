@@ -1,0 +1,18 @@
+{
+  "name": "farm-survey-app",
+  "version": "1.0.0",
+  "description": "Farm Survey Application - Frontend",
+  "scripts": {
+    "build": "esbuild src/app.ts --bundle --format=iife --outfile=static/js/app.js --target=es2020",
+    "watch": "esbuild src/app.ts --bundle --format=iife --outfile=static/js/app.js --target=es2020 --watch",
+    "dev": "esbuild src/app.ts --bundle --format=iife --outfile=static/js/app.js --target=es2020 --watch"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "esbuild": "^0.19.8"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
+

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Survey App</title>
+    <!-- PWA Settings -->
+    <link rel="manifest" href="/static/manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FarmSurvey">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2823/2823521.png">
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header id="main-header">
+            <h1>🌾 Farm Survey Management</h1>
+        </header>
+
+        <!-- VIEW: LIST (Landing Page) -->
+        <div id="view-list" class="view-section active-view">
+            <div class="section-header">
+                <h2>All Surveys</h2>
+                <div class="header-actions">
+                    <span id="sync-status-indicator" class="sync-status">Online</span>
+                    <button id="sync-btn" class="btn-sync" style="display: none;">Sync Now</button>
+                    <button id="refresh-btn" class="btn-refresh">Refresh</button>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-container">
+                <span class="material-icons search-icon">search</span>
+                <input type="text" id="search-input" placeholder="Search surveys by name, crop, or location...">
+            </div>
+
+            <div id="loading" class="loading">Loading...</div>
+            <div id="surveys-list" class="surveys-list"></div>
+            <div id="no-surveys" class="no-surveys" style="display: none;">
+                <p>No surveys found.</p>
+            </div>
+
+            <!-- FAB for Create -->
+            <button class="fab" onclick="showCreateForm()">
+                <span class="material-icons">add</span>
+            </button>
+        </div>
+
+        <!-- VIEW: DETAIL (Read Only + Actions) -->
+        <div id="view-detail" class="view-section" style="display: none;">
+            <div class="detail-header">
+                <button class="btn-icon" onclick="showListView()">
+                    <span class="material-icons">arrow_back</span>
+                </button>
+                <h2 id="detail-title">Survey Details</h2>
+                <div class="detail-actions">
+                    <button id="detail-edit-btn" class="btn-edit">Edit</button>
+                    <button id="detail-delete-btn" class="btn-delete">Delete</button>
+                </div>
+            </div>
+
+            <div class="detail-content card">
+                <div class="detail-row">
+                    <label>Farmer:</label> <span id="detail-farmer"></span>
+                </div>
+                <div class="detail-row">
+                    <label>Crop:</label> <span id="detail-crop"></span>
+                </div>
+                <div class="detail-row">
+                    <label>Location:</label> <span id="detail-location"></span>
+                </div>
+
+                <h3>Trees</h3>
+                <div id="detail-trees-container"></div>
+            </div>
+        </div>
+
+        <!-- VIEW: FORM (Create/Edit) -->
+        <div id="view-form" class="view-section" style="display: none;">
+            <div class="detail-header">
+                <button class="btn-icon" onclick="showListView()">
+                    <span class="material-icons">close</span>
+                </button>
+                <h2 id="form-title">Create Survey</h2>
+            </div>
+
+            <div class="form-container card">
+                <form id="survey-form">
+                    <input type="hidden" id="survey-id">
+
+                    <div class="form-group">
+                        <label for="farmer-name">Farmer Name *</label>
+                        <input type="text" id="farmer-name" required placeholder="e.g. John Doe">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="crop-type">Crop Type *</label>
+                        <input type="text" id="crop-type" required placeholder="e.g. Wheat">
+                    </div>
+
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="latitude">Latitude *</label>
+                            <input type="number" id="latitude" step="any" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="longitude">Longitude *</label>
+                            <input type="number" id="longitude" step="any" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group checkbox-label">
+                        <input type="checkbox" id="sync-status">
+                        <label for="sync-status">Mark as Synced</label>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" id="submit-btn">Save Survey</button>
+                        <button type="button" class="btn-cancel" onclick="showListView()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/app.js?v=4"></script>
+</body>
+
+</html>

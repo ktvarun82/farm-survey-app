@@ -1,0 +1,515 @@
+:root {
+    --primary-color: #4CAF50;
+    --primary-dark: #388E3C;
+    --accent-color: #8BC34A;
+    --text-color: #333;
+    --bg-color: #f4f4f9;
+    --card-bg: #fff;
+    --error-color: #f44336;
+    --success-color: #4CAF50;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    color: var(--primary-dark);
+    margin-bottom: 5px;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+@media (min-width: 768px) {
+    .main-content {
+        grid-template-columns: 1fr 2fr;
+        /* Form on left, List on right */
+    }
+}
+
+/* Form Section */
+.form-section {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-group-row {
+    display: flex;
+    gap: 10px;
+}
+
+.form-group-row .form-group {
+    flex: 1;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+#submit-btn {
+    background-color: var(--primary-color);
+    color: white;
+    flex: 1;
+}
+
+#submit-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+.btn-cancel {
+    background-color: #9e9e9e;
+    color: white;
+}
+
+/* Surveys List */
+.surveys-section {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.section-header h2 {
+    margin: 0;
+    color: var(--primary-dark);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-refresh {
+    background-color: #2196F3;
+    /* Blue */
+    color: white;
+}
+
+.btn-sync {
+    background-color: #FF9800;
+    /* Orange */
+    color: white;
+}
+
+/* Survey Card */
+.survey-card {
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #fafafa;
+}
+
+.survey-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.survey-id {
+    font-weight: bold;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.survey-actions button {
+    padding: 5px 10px;
+    font-size: 0.8em;
+}
+
+.btn-edit {
+    background-color: #FFC107;
+    color: #333;
+}
+
+.btn-delete {
+    background-color: var(--error-color);
+    color: white;
+}
+
+.survey-detail {
+    margin-bottom: 5px;
+}
+
+.badge {
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    color: white;
+}
+
+.badge-synced {
+    background-color: var(--success-color);
+}
+
+.badge-not-synced {
+    background-color: #FF9800;
+}
+
+/* Inline Tree View (Table Style) */
+.inline-trees-section {
+    margin-top: 15px;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+.inline-trees-header {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tree-table-container {
+    max-height: 200px;
+    /* Approx 5 rows */
+    overflow-y: auto;
+    overflow-x: auto;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    background: white;
+}
+
+.tree-table {
+    width: 100%;
+    min-width: 600px;
+    /* Force horizontal scroll on small screens if many columns */
+    border-collapse: collapse;
+    font-size: 0.85em;
+}
+
+.tree-table th,
+.tree-table td {
+    padding: 8px 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    white-space: nowrap;
+}
+
+.tree-table th {
+    background-color: #f9f9f9;
+    font-weight: 600;
+    color: #555;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    border-bottom: 2px solid #eee;
+}
+
+.btn-icon-small {
+    background: none;
+    border: none;
+    padding: 2px;
+    cursor: pointer;
+    color: #757575;
+    opacity: 0.7;
+}
+
+.btn-icon-small:hover {
+    opacity: 1;
+    color: var(--primary-color);
+}
+
+.btn-icon-small.delete:hover {
+    color: var(--error-color);
+}
+
+/* Modal for Add Tree (keep this) */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* Loading/Messages */
+.message {
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    color: white;
+    text-align: center;
+}
+
+.success-message {
+    background-color: var(--success-color);
+}
+
+.error-message {
+    background-color: var(--error-color);
+}
+
+.loading {
+    display: none;
+    text-align: center;
+    margin: 20px;
+}
+
+/* ------------------------------------------------------------------
+   NEW STYLES FOR MASTER-DETAIL ARCHITECTURE
+   ------------------------------------------------------------------ */
+
+/* View Management */
+.view-section {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Search Bar */
+.search-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    /* Left padding for icon */
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    /* Rounded pill shape */
+    font-size: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    outline: none;
+    transition: box-shadow 0.3s, border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.search-container input:focus {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-color);
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    pointer-events: none;
+}
+
+/* FAB - Floating Action Button */
+.fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 24px;
+    transition: transform 0.2s;
+    z-index: 100;
+}
+
+.fab:hover {
+    transform: scale(1.1);
+    background-color: var(--primary-dark);
+}
+
+/* Detail View Layout */
+.detail-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.detail-header h2 {
+    margin: 0;
+    flex: 1;
+    color: var(--primary-dark);
+}
+
+.detail-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.detail-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.detail-row {
+    margin-bottom: 12px;
+    font-size: 1.1em;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 8px;
+}
+
+.detail-row label {
+    font-weight: bold;
+    color: #666;
+    margin-right: 15px;
+    min-width: 80px;
+    display: inline-block;
+}
+
+/* Common Card for Form Container */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Icon Only Styles */
+.btn-icon {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #555;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-icon:hover {
+    background-color: #eee;
+    color: var(--primary-color);
+}
+
+/* Interactive Survey Summary Card */
+.survey-card {
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.survey-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.survey-card:active {
+    transform: translateY(0);
+}
+
+.btn-add-tree-inline {
+    background: none;
+    border: 1px dashed var(--primary-color);
+    color: var(--primary-color);
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.btn-add-tree-inline:hover {
+    background: #e8f5e9;
+}
