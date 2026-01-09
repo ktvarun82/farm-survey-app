@@ -107,3 +107,4 @@ esbuild src/app.ts --bundle --format=iife --outfile=static/js/app.js --target=es
 
 **Note**: Always compile TypeScript before deploying. The `static/js/app.js` file is generated and should not be edited directly.
 
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug - Tree Functions</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        button { margin: 10px; padding: 10px 20px; }
+        .result { margin: 20px 0; padding: 10px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Debug - Tree Functions</h1>
+
+    <button onclick="testShowAddTreeForm()">Test showAddTreeForm(1)</button>
+    <button onclick="testGlobalFunctions()">Check Global Functions</button>
+
+    <div id="result" class="result"></div>
+
+    <script src="/static/js/app.js"></script>
+    <script>
+        function testShowAddTreeForm() {
+            document.getElementById('result').innerHTML = 'Testing showAddTreeForm...';
+            try {
+                if (typeof window.showAddTreeForm === 'function') {
+                    window.showAddTreeForm(1);
+                    document.getElementById('result').innerHTML = 'showAddTreeForm called successfully';
+                } else {
+                    document.getElementById('result').innerHTML = 'ERROR: showAddTreeForm function not found';
+                }
+            } catch (e) {
+                document.getElementById('result').innerHTML = 'ERROR: ' + e.message;
+            }
+        }
+
+        function testGlobalFunctions() {
+            const functions = ['showAddTreeForm', 'editTree', 'deleteTree'];
+            let result = '<h3>Global Functions Check:</h3>';
+
+            functions.forEach(func => {
+                if (typeof window[func] === 'function') {
+                    result += `${func}: ✅ Available<br>`;
+                } else {
+                    result += `${func}: ❌ Not Available<br>`;
+                }
+            });
+
+            document.getElementById('result').innerHTML = result;
+        }
+
+        // Auto-check on load
+        window.addEventListener('load', testGlobalFunctions);
+    </script>
+</body>
+</html>

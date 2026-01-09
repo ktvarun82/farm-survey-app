@@ -1,0 +1,50 @@
+# Git
+.git
+.gitignore
+
+# Python cache
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+env/
+venv/
+ENV/
+
+# Database files (use PostgreSQL in production)
+*.db
+*.sqlite
+*.sqlite3
+
+# Node.js (not needed in production)
+node_modules/
+package*.json
+tsconfig.json
+
+# Environment files (use Docker env vars instead)
+.env
+
+# Test files
+.pytest_cache/
+test-results.xml
+test_*.py
+conftest.py
+
+# IDE
+.vscode/
+.idea/
+
+# Documentation (not needed in container)
+*.md
+
+# Build artifacts
+dist/
+build/
+src/
+
+# OS files
+.DS_Store
+Thumbs.db
